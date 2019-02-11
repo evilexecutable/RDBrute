@@ -124,6 +124,7 @@
             0,
             0,
             0});
+            this.threadBox.ValueChanged += new System.EventHandler(this.threadBox_ValueChanged);
             // 
             // browseusernamebutton
             // 

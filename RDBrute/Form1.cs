@@ -40,7 +40,7 @@ namespace RDBrute {
                 string[] servers = File.ReadAllLines(serverbox.Text);
                 int threads = Convert.ToInt32(threadBox.Value);
 
-                rdp.newclient(Form1.ActiveForm, usernames, passwords, servers, threads);
+                rdp.newclient(Form1.ActiveForm, usernames, passwords, servers);
             }
 
         }
@@ -70,6 +70,10 @@ namespace RDBrute {
                 string serverFileName = OpenServerFile.FileName;
                 serverbox.Text = serverFileName;
             }
+        }
+
+        private void threadBox_ValueChanged(object sender, EventArgs e) {
+
         }
     }
 }
