@@ -1,18 +1,3 @@
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\obj\Debug\RDBrute.csprojAssemblyReference.cache
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\obj\Debug\Interop.MSTSCLib.dll
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\obj\Debug\AxInterop.MSTSCLib.dll
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\obj\Debug\RDBrute.csproj.ResolveComReference.cache
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\obj\Debug\RDBrute.Form1.resources
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\obj\Debug\RDBrute.Properties.Resources.resources
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\obj\Debug\RDBrute.csproj.GenerateResource.cache
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\obj\Debug\RDBrute.csproj.CoreCompileInputs.cache
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\bin\Debug\RDBrute.exe.config
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\bin\Debug\RDBrute.exe
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\bin\Debug\RDBrute.pdb
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\bin\Debug\Interop.MSTSCLib.dll
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\bin\Debug\AxInterop.MSTSCLib.dll
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\obj\Debug\RDBrute.exe
-C:\Users\Lewis Smith\source\repos\RDBrute\RDBrute\obj\Debug\RDBrute.pdb
 C:\Users\Abtekk\Desktop\RDBrute\RDBrute\RDBrute\bin\Debug\RDBrute.exe.config
 C:\Users\Abtekk\Desktop\RDBrute\RDBrute\RDBrute\bin\Debug\RDBrute.exe
 C:\Users\Abtekk\Desktop\RDBrute\RDBrute\RDBrute\bin\Debug\RDBrute.pdb
